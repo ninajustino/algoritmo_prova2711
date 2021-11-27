@@ -1,0 +1,56 @@
+#Opção 1: Percorrer Palavra - 3 pontos
+#Este exercício consiste em digitarmos uma palavra em letras maiúsculas. O programa percorrerá a palavra informando em qual posição do alfabeto encontra-se cada uma das letras da palavra digitada. 
+
+print("* * * PERCORRER PALAVRA * * * \n")
+print("* * * UTILIZE LETRAS MAIÚSCULAS * * * \n")
+
+palavra = input("Digite uma única palavra: ").upper()
+print("\nQuantidade de letras: ")
+print(len(palavra))
+
+alfabeto = "\nABCDEFGHIJKLMNOPQRSTUVWXYZ"
+print(alfabeto)
+print("12345678901234567890123456\n")
+
+posCount = 1
+
+for letra in palavra:
+  indexAlfabeto = (alfabeto.find(letra)+1)
+  print(f"Letra da Palavra: {letra} - Posição: {posCount}")
+  print(f"Letra na posição: {indexAlfabeto}")    
+  print("\n**********************\n")
+  posCount += 1
+
+#Opção 2: Jogo da Quina - 5 pontos
+#Este exercício tem sua funcionalidade baseada em sorteio de números aleatórios. Função usada em diversos programas que desenvolvemos durante o semestre. O programa deverá sortear primeiramente 5 números que serão atribuídos ao apostador em seguida o programa sorteia outros 5 números atribuídos ao resultado do concurso. O programa deverá mostrar quais foram os números apostados e os números sorteados informando quantos números o apostador acertou. A figura 3 mostra o programa em execução.
+
+print("* * * JOGO DA QUINA * * * \n")
+print("* * * QUINTA - CONCURSO 2711 - 27/11/2021 * * * \n")
+
+import random
+
+def geraNumeros() -> list:
+  aposta = numeros()
+  resultado = numeros()
+
+print(f"APOSTA: {' - '.join(str(n) for n in aposta)}",)
+print(f"RESULTADO: {' - '.join(str(n) for n in resultado)}\n")
+
+countAcertos = 0
+for n in aposta:    
+  print(f"NÚMERO APOSTADO: {n}")
+  if n in resultado:
+    print(f"* * * ACERTOU!!! * * * {n} - {n}")    
+    countAcertos += 1
+  
+print(f"QUANTIDADE DE ACERTOS: {countAcertos}\n")
+
+def numeros() -> list:
+  nSorteado = []
+  while len(nSorteado) <= 4:
+    numero = random.randint(1,80) 
+    
+    if numero not in nSorteado:
+      nSorteado.append(numero)
+  
+  return nSorteado
